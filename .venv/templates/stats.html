@@ -1,0 +1,66 @@
+
+{% extends "base.html" %} {% block title %}Project List{% endblock %} {% block
+    content %}
+    <div>
+        <video autoplay muted loop id="myVideo">
+          <source
+            src="{{ url_for('static', filename='assets/images/Data_Grid.mp4' )  }}"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+    
+    <div class="container-fluid">
+      <!-- start page title -->
+    
+      <!-- end page title -->
+      <link href="{{ url_for('static', filename='assets/css/bootstrap.min.css' )  }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+<div class="page-content">
+    <div class="row">
+        {% for course_unit in output_list %}
+        <div class="col-xl-4">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title mb-4">Course Unit: {{ course_unit.course_unit }}</h4>
+              <ul class="list-group" data-simplebar style="max-height: 390px;">
+                {% for missing_skill in course_unit.missing_skills %}
+                <li class="list-group-item border-0">
+                  <div class="d-flex">
+                    <div class="flex-shrink-0 me-3">
+                      <div class="avatar-xs">
+                        <span class="avatar-title rounded-circle bg-light">
+                        </span>
+                      </div>
+                    </div>
+                    <div class="flex-grow-1">
+                      <h5 class="font-size-14">{{ missing_skill.skill_name }}</h5>
+                      <p class="text-muted">Frequency: {{ missing_skill.frequency }}</p>
+                      <div class="float-end">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+</div>
+    
+
+
+
+     <script src="{{ url_for('static', filename='assets/libs/jquery/jquery.min.js' )  }}"></script>
+     <script src="{{ url_for('static', filename='assets/libs/bootstrap/js/bootstrap.bundle.min.js' )  }}"></script>
+
+     <script src="{{ url_for('static', filename='assets/libs/metismenu/metisMenu.min.js' )  }}"></script>
+     <script src="{{ url_for('static', filename='assets/libs/simplebar/simplebar.min.js' )  }}"></script>
+     <script src="{{ url_for('static', filename='assets/libs/node-waves/waves.min.js' )  }}"></script>
+     <script src="{{ url_for('static', filename='assets/libs/echarts/echarts.min.js' )  }}"></script>
+     <script src="{{ url_for('static', filename='assets/js/pages/echarts.init.js' )  }}"></script>
+     <script src="{{ url_for('static', filename='assets/js/app.js' )  }}"></script>
+
+
+    {% endblock %}

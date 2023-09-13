@@ -1,0 +1,66 @@
+
+{% extends "base.html" %} {% block title %}Project List{% endblock %} {% block
+    content %}
+    <div>
+        <video autoplay muted loop id="myVideo">
+          <source
+            src="{{ url_for('static', filename='assets/images/Data_Grid.mp4' )  }}"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+    
+    <div class="container-fluid">
+      <!-- start page title -->
+    
+      <!-- end page title -->
+    
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12">
+                  <div
+                    class="page-title-box d-sm-flex align-items-center justify-content-between"
+                  >
+                    <h4 class="mb-sm-0 font-size-18">List of all skills</h4>
+                
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table id="tab" class="table align-middle table-nowrap table-hover">
+                  <thead class="table-light">
+                    <tr>
+                      <th scope="col" style="width: 70px">#</th>
+                      <th scope="col">SKILL NAME</th>
+                      <th scope="col">Importance</th>
+                      <th scope="col">COURSE</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for i in range (skill_name|length) %}
+                    <tr>
+                      <td>{{i+1}}</td>
+                      <td> {{skill_name[i] }} </td> 
+                      <td> {{freq[i] }} </td> 
+                      <td> {{course[i] }} </td> 
+                                                {% endfor %}
+                    </tr>
+                  </tbody>
+                </table>
+
+
+
+
+
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock %}

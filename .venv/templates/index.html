@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block title %}home{% endblock %} {% block content
+%}
+<div>
+  <video autoplay muted loop id="myVideo">
+    <source
+      src="{{ url_for('static', filename='assets/images/Data_Grid.mp4' )  }}"
+      type="video/mp4"
+    />
+  </video>
+</div>
+{% endblock %}

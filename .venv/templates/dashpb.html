@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block title %}Project List{% endblock %} {% block
+content %}
+<div class="container-fluid">
+  <video autoplay muted loop id="myVideo">
+    <source
+      src="{{ url_for('static', filename='assets/images/Data_Grid.mp4' )  }}"
+      type="video/mp4"
+    />
+  </video>
+
+  <div >
+    <!-- start page title -->
+  
+    <!-- end page title -->
+  
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            
+            <span class="badge rounded-pill badge-soft-primary font-size-11">Power BI Dashboard</span>
+
+            <iframe title="Curriculum" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=c000ba38-7f07-4277-afdf-b7afc8d9c4be&autoAuth=true&ctid=513486ec-6643-4f17-a508-76478311be42" frameborder="0" allowFullScreen="true"></iframe>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

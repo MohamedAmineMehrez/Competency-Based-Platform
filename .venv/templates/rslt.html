@@ -1,0 +1,120 @@
+{% extends "base.html" %} {% block title %}Result{% endblock %} {% block
+    content %}
+    
+    <div class="container-fluid">
+      <!-- start page title -->
+    
+      <!-- end page title -->
+    
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12">
+                  <div
+                    class="page-title-box d-sm-flex align-items-center justify-content-between"
+                  >
+                    <h4 class="mb-sm-0 font-size-18">Result List for : {{name}}</h4>
+                    
+                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      
+                      <i class="mdi mdi-filter"></i>
+                      Filter <i class="mdi mdi-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-md p-4">
+                        <form method="post">
+                         
+                          <select class="select2 form-control select2-multiple"
+                            name="cat">
+                            <option value="" disabled selected>Select your category</option>
+                            <option value="subdomains">subdomains</option>
+                            <option value="search engine">search engine</option>
+                            <option value="search engine">URL Extraction</option>
+                          </select>
+                            <button type="submit" name="did" value="{{x}}" class="btn btn-primary">Filter</button>
+                        </form>
+                    </div>
+                  </div>
+                    
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table id="tab" class="table align-middle table-nowrap table-hover">
+                  <thead class="table-light">
+                    <tr>
+                      <th scope="col" style="width: 70px">#</th>
+                      <th scope="col">Result</th>
+                      <th scope="col">Category</th>
+
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      {% for item in values.find({"project":x}) %}
+                      <td>
+                        <div class="avatar-xs">
+                          <span class="avatar-title rounded-circle">
+                            {{name[0]}}
+                          </span>
+                        </div>
+                      </td>
+                      <td>  
+
+                        
+                          
+                          <button type="button" class="btn btn-dark waves-effect btn-label waves-light " data-bs-toggle="modal" data-bs-target="#myModal{{item['_id']}}">
+                            <i class="mdi mdi-eye label-icon"></i>
+                            Result 
+                          </button>
+                          <div class="modal fade" id="myModal{{item['_id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                            
+                            <div class="modal-dialog modal-dialog-scrollable" id="{{item['_id']}}">
+                              
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalScrollableTitle">Results</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    
+                                    <div class="modal-body">
+                                      <ul class="sub-menu" >
+                                        
+                                        {% if item["result"]  %}{% for i in item["result"] %}
+                                        <li>
+                                          <a>{{i}}</a>
+                                        </li>
+                                        
+                                        {% endfor %}{% endif %}
+                                      </ul>
+                                    </div>
+                                    
+                                </div><!-- /.modal-content -->
+                                
+                            </div><!-- /.modal-dialog -->
+                            
+                        </div><!-- /.modal -->
+                          
+                      
+                                
+                      </td>
+                      <td>
+                        {{item["category"]}}
+                      </td>
+                      
+                      
+
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      
+    {% endblock %}

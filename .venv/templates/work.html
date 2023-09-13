@@ -1,0 +1,68 @@
+{% extends "base.html" %} {% block title %}Main{% endblock %} {% block content
+%}
+</br>
+</br></br></br>
+<div class="row justify-content-center">
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Begin Your Project</h4>
+        <p class="card-title-desc">
+          
+
+          
+        </p>
+       
+
+        <form  method="POST" enctype="multipart/form-data" >
+          <div class="row">
+            <div class="fallback">
+              <label for="pdf-files">Select PDF files:</label>
+              <input type="file" name="pdf_files" accept=".pdf" multiple>  
+            </div>
+            <div class="dz-message needsclick">
+                                                    <div class="mb-3">
+                                                        <i class="display-4 text-muted bx bxs-cloud-upload"></i>
+                                                    </div>
+                                                    
+                                                    <h4>Drop files here or click to upload.</h4>
+                                                </div>
+             
+              <div class="mb-3">
+                <label class="form-label">Tools to use</label>
+
+                <select
+                  class="select2 form-control "
+                  
+                  data-placeholder="Choose ..." 
+                  name="sel"
+                  >
+                  
+                  <optgroup >
+                    {% for item in dd %}
+                    <option  value="{{item}}" name="SF">{{item}}</option>
+                    {% endfor %}
+                  </optgroup>
+                  
+                 
+                  
+                </select>
+              </div>
+              <div class="mb-3"><button type="submit" name="test" value="submit" class="btn btn-secondary btn-rounded waves-effect waves-light">Continue importing files</button></div>
+              
+
+            </div>
+          </div>
+        </form>
+
+        <div class="row">
+            <form action="/matching" method="POST">
+              <div class="mb-3"><button type="submit" name="finish" value="end" class="btn btn-success btn-rounded waves-effect waves-light">End importing</button></div>
+            </form>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
